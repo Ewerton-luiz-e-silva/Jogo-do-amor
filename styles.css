@@ -1,0 +1,381 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    /* Imagem de fundo */
+    background: url("imagem/fundo/Igreja\ \(267\).jpg") no-repeat center center fixed;
+
+    /* Ajuste da imagem */
+    background-size: cover;
+
+    /* Caso queira manter o gradiente por cima da imagem */
+    /* background: linear-gradient(135deg, #f5f7fa99 0%, #c3cfe299 100%), 
+                url("img/fundo.jpg") no-repeat center center fixed; */
+    /* O "99" deixa o gradiente semi-transparente */
+    
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background-color: rgba(255, 192, 203, 0.3); /* pink transparente */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    /* efeito de vidro fosco */
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(10px); /* compatibilidade Safari */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* borda suave */
+}
+
+
+h1 {
+    color: #e75480;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+h2 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+p {
+    color: #fff;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.heart {
+    color: #e75480;
+    font-size: 24px;
+    margin: 0 5px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #fff;
+    font-weight: 500;
+}
+
+input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+input:focus {
+    border-color: #e75480;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(231, 84, 128, 0.2);
+}
+
+button {
+    background-color: #e75480;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover {
+    background-color: #d44672;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.screen {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.active {
+    display: block;
+}
+
+.question {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: left;
+    animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.option {
+    padding: 12px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.option:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.02);
+}
+
+.selected {
+    background-color: #e75480;
+    color: white;
+}
+
+.correct {
+    background-color: #4caf50;
+    color: white;
+    animation: pulse 0.5s;
+}
+
+.wrong {
+    background-color: #f44336;
+    color: white;
+    animation: shake 0.5s;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-10px); }
+    40% { transform: translateX(10px); }
+    60% { transform: translateX(-10px); }
+    80% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+}
+
+.poem {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 25px;
+    border-radius: 10px;
+    margin: 20px 0;
+    font-style: italic;
+    line-height: 1.8;
+    text-align: center;
+    animation: fadeIn 1s ease;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas lado a lado */
+    gap: 15px;
+    margin: 25px 0;
+}
+
+
+.gallery-item img {
+    width: 100%;             /* ocupa toda a largura do item */
+    height: 100%;            /* ocupa toda a altura do item */
+    object-fit: cover;       /* mantém proporção e corta o excesso */
+    border-radius: 10px;     /* mantém os cantos arredondados do item */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05);  /* zoom leve ao passar o mouse */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.gallery-item p {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    margin: 0;
+    padding: 5px 8px;
+    background-color: rgba(0,0,0,0.5);
+    color: #fff;
+    font-size: 12px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.btn-music {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e75480;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.btn-music:hover {
+    background-color: #ff6b6b;
+}
+
+.progress-bar {
+    margin-top: 20px;
+    height: 6px;
+    background-color: #eee;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background-color: #e75480;
+    width: 0%;
+    transition: width 0.3s;
+}
+
+.hidden {
+    display: none;
+}
+
+.message {
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    animation: fadeIn 0.5s;
+}
+
+.success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.error {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+.celebration {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+}
+
+@keyframes fall {
+    from { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+    to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+.confetti {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: #e75480;
+    animation: fall linear forwards;
+}
+
+.btn-icon {
+    margin-right: 8px;
+}
+
+.floating-hearts {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.floating-heart {
+    position: absolute;
+    font-size: 20px;
+    color: #e75480;
+    animation: float 6s ease-in-out infinite;
+    opacity: 0.7;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.7; }
+    90% { opacity: 0.7; }
+    100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+}
+
+.button-sound {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+    
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* Estilo para o vídeo dentro do music-player */
+.music-player video {
+    width: 100%;           /* ocupa toda a largura do container */
+    max-width: 100%;       /* garante responsividade */
+    border-radius: 10px;   /* cantos arredondados igual ao container */
+    margin-top: 15px;      /* espaço acima do vídeo */
+    display: block;        /* garante que o vídeo seja bloco */
+    background-color: #000; /* fundo preto caso o vídeo não carregue imediatamente */
+}

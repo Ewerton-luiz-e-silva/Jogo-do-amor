@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Aniversário de Casamento</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Efeito de corações flutuantes -->
+        <div class="floating-hearts"></div>
+        
+        <!-- Tela de Login -->
+        <div id="login-screen" class="screen active">
+            <h1>Nosso Aniversário de Casamento <span class="heart">❤</span></h1>
+            <p>Para começar nossa celebração, digite nossa data de casamento:</p>
+            <div class="input-group">
+                <label for="wedding-date">Data de Casamento (DD/MM/AAAA):</label>
+                <input type="text" id="wedding-date" placeholder="Digite assim = (01/01/2025)">
+            </div>
+            <button id="login-btn">
+                <i class="fas fa-heart btn-icon"></i> Entrar
+            </button>
+            <div id="login-message" class="message hidden"></div>
+        </div>
+        
+        <!-- Fase 1 - Quiz Romântico -->
+        <div id="quiz-screen-1" class="screen">
+            <h1>Fase 1: Nosso Quiz <span class="heart">❤</span></h1>
+            <p>Responda essas perguntas sobre nós. Você precisa acertar para avançar!</p>
+            
+            <div class="question" id="question-1">
+                <h3>Pergunta 1: Onde foi nosso primeiro encontro?</h3>
+                <div class="options">
+                    <div class="option" data-correct="false" data-value="A">No cinema</div>
+                    <div class="option" data-correct="true" data-value="B">No praça</div>
+                    <div class="option" data-correct="false" data-value="C">No restaurante</div>
+                    <div class="option" data-correct="false" data-value="D">Na praia</div>
+                </div>
+                <div id="feedback-1" class="message hidden"></div>
+            </div>
+            
+            <div class="question hidden" id="question-2">
+                <h3>Pergunta 2: Qual é minha comida favorita?</h3>
+                <div class="options">
+                    <div class="option" data-correct="false" data-value="A">Pizza</div>
+                    <div class="option" data-correct="true" data-value="B">Salsicha</div>
+                    <div class="option" data-correct="false" data-value="C">Strogonoff</div>
+                    <div class="option" data-correct="false" data-value="D">Churrasco</div>
+                </div>
+                <div id="feedback-2" class="message hidden"></div>
+            </div>
+            
+            <div class="question hidden" id="question-3">
+                <h3>Pergunta 3: Qual foi o presente que mais te emocionou?</h3>
+                <div class="options">
+                    <div class="option" data-correct="true" data-value="A">A aliança de compromisso</div>
+                    <div class="option" data-correct="false" data-value="B">O buquê de flores no aniversário</div>
+                    <div class="option" data-correct="false" data-value="C">A viagem surpresa</div>
+                    <div class="option" data-correct="false" data-value="D">O jantar à luz de velas</div>
+                </div>
+                <div id="feedback-3" class="message hidden"></div>
+            </div>
+            
+            <div class="question hidden" id="question-4">
+                <h3>Pergunta 4: O que mais me faz feliz no nosso relacionamento?</h3>
+                <div class="options">
+                    <div class="option" data-correct="false" data-value="A">Nossas conversas profundas</div>
+                    <div class="option" data-correct="false" data-value="B">Nossas aventuras juntos</div>
+                    <div class="option" data-correct="true" data-value="C">Seu apoio incondicional</div>
+                    <div class="option" data-correct="false" data-value="D">Seu senso de humor</div>
+                </div>
+                <div id="feedback-4" class="message hidden"></div>
+            </div>
+            
+            <div class="question hidden" id="question-5">
+                <h3>Pergunta 5: Qual é nossa música especial?</h3>
+                <div class="options">
+                    <div class="option" data-correct="false" data-value="A">11 Vidas</div>
+                    <div class="option" data-correct="false" data-value="B">Vagalumes</div>
+                    <div class="option" data-correct="true" data-value="C">Na Linha do Tempo</div>
+                    <div class="option" data-correct="false" data-value="D">Diz Pra Mim</div>
+                </div>
+                <div id="feedback-5" class="message hidden"></div>
+            </div>
+            
+            <button id="next-question-1" class="hidden">
+                <i class="fas fa-arrow-right btn-icon"></i> Próxima Pergunta
+            </button>
+            <button id="finish-quiz-1" class="hidden">
+                <i class="fas fa-check btn-icon"></i> Finalizar Quiz
+            </button>
+        </div>
+        
+        <!-- Tela de Parabéns e Código 1 -->
+        <div id="congrats-screen-1" class="screen">
+            <h1>Parabéns, Meu Amor! <span class="heart">❤</span></h1>
+            <p>Você acertou todas as perguntas! Isso prova o quanto nos conhecemos bem.</p>
+            <p>Para continuar para a próxima fase, vá até a <strong>Loja de Shefora</strong> e diga o código abaixo:</p>
+            <div class="poem">
+                <!-- Primeira pessoa a buscar @@@@@@@@@@@@@@@@-->
+                <h2>Procure por : <strong>( )</strong></h2>
+            </div>
+            <div class="input-group">
+                <label for="code-1">Digite o código para desbloquear a Fase 2:</label>
+                <input type="text" id="code-1" placeholder="Digite o código">
+            </div>
+            <button id="unlock-phase2">
+                <i class="fas fa-unlock btn-icon"></i> Desbloquear Fase 2
+            </button>
+            <div id="code-message-1" class="message hidden"></div>
+        </div>
+        
+        <!-- Fase 2 - Quiz Romântico -->
+        <div id="quiz-screen-2" class="screen">
+            <h1>Fase 2: Mais Sobre Nós <span class="heart">❤</span></h1>
+            <p>Mais perguntas sobre nossa história juntos. Lembre-se: só avança se acertar!</p>
+            
+            <div class="question" id="question-6">
+                <h3>Pergunta 6: Qual foi a primeira viagem que fizemos juntos?</h3>
+                <div class="options">
+                    <div class="option" data-correct="false" data-value="A">Para as montanhas</div>
+                    <div class="option" data-correct="true" data-value="B">Para porto seguro</div>
+                    <div class="option" data-correct="false" data-value="C">Para o campo</div>
+                    <div class="option" data-correct="false" data-value="D">Para uma cidade histórica</div>
+                </div>
+                <div id="feedback-6" class="message hidden"></div>
+            </div>
+            
+            <div class="question hidden" id="question-7">
+                <h3>Pergunta 7: O que mais admiro em você?</h3>
+                <div class="options">
+                    <div class="option" data-correct="false" data-value="A">Sua inteligência</div>
+                    <div class="option" data-correct="true" data-value="B">Seu coração</div>
+                    <div class="option" data-correct="false" data-value="C">Sua determinação</div>
+                    <div class="option" data-correct="false" data-value="D">Seu senso de humor</div>
+                </div>
+                <div id="feedback-7" class="message hidden"></div>
+            </div>
+            
+            <div class="question hidden" id="question-8">
+                <h3>Pergunta 8: Qual foi o momento mais emocionante do nosso casamento?</h3>
+                <div class="options">
+                    <div class="option" data-correct="true" data-value="A">Nossos votos</div>
+                    <div class="option" data-correct="false" data-value="B">A primeira dança</div>
+                    <div class="option" data-correct="false" data-value="C">O discurso dos padrinhos</div>
+                    <div class="option" data-correct="false" data-value="D">A troca de alianças</div>
+                </div>
+                <div id="feedback-8" class="message hidden"></div>
+            </div>
+            
+            <div class="question hidden" id="question-9">
+                <h3>Pergunta 9: O que sempre me faz lembrar de você?</h3>
+                <div class="options">
+                    <div class="option" data-correct="true" data-value="A">Nossa música</div>
+                    <div class="option" data-correct="false" data-value="B">O perfume que você usa</div>
+                    <div class="option" data-correct="false" data-value="C">O pôr do sol</div>
+                    <div class="option" data-correct="false" data-value="D">O café da manhã</div>
+                </div>
+                <div id="feedback-9" class="message hidden"></div>
+            </div>
+            
+            <div class="question hidden" id="question-10">
+                <h3>Pergunta 10: O que espero para nosso futuro?</h3>
+                <div class="options">
+                    <div class="option" data-correct="false" data-value="A">Muitas viagens juntos</div>
+                    <div class="option" data-correct="false" data-value="B">Construir uma família</div>
+                    <div class="option" data-correct="false" data-value="C">Crescer profissionalmente juntos</div>
+                    <div class="option" data-correct="true" data-value="D">Quero que nosso amor sempre florescer</div>
+                </div>
+                <div id="feedback-10" class="message hidden"></div>
+            </div>
+            
+            <button id="next-question-2" class="hidden">
+                <i class="fas fa-arrow-right btn-icon"></i> Próxima Pergunta
+            </button>
+            <button id="finish-quiz-2" class="hidden">
+                <i class="fas fa-check btn-icon"></i> Finalizar Quiz
+            </button>
+        </div>
+        
+        <!-- Tela do Poema e Código 2 -->
+        <div id="poem-screen" class="screen">
+            <h1>Para o Amor da Minha Vida <span class="heart">❤</span></h1>
+            <div class="poem">
+                <p>Em outubro de 2016, nossos caminhos se entrelaçaram,</p>
+                <p>E desde então, meu coração só por você pulsou.</p>
+                <p>Cada amanhecer ao seu lado é um presente divino,</p>
+                <p>És a harmonia perfeita em cada verso do meu destino.</p>
+                <br>
+                <p>Com você aprendi que o amor é luz que ilumina a alma,</p>
+                <p>És meu refúgio sereno, minha paz e minha calma.</p>
+                <p>Juntos construímos sonhos, momentos de alegria,</p>
+                <p>Nosso lar se encheu de risos, amor e magia.</p>
+                <br>
+                <p>Logan, Liam e Erick, frutos do nosso amor,</p>
+                <p>São estrelas que brilham, espalhando calor.</p>
+                <p>Com cada sorriso deles, nosso mundo se completa,</p>
+                <p>A vida ao nosso lado é sempre uma festa repleta.</p>
+                <br>
+                <p>Que nossos dias sejam eternos, cheios de ternura e paixão,</p>
+                <p>Que cada abraço e beijo sejam sempre nossa canção.</p>
+                <p>Você será eternamente minha eterna companhia,</p>
+                <p>Juntos, nós florescemos, na mais pura alegria.</p>
+
+            </div>
+            <p>Agora, vá até a <strong>Loja da Melissa</strong> e diga o código abaixo:</p>
+            <!-- Sugunda pessoa a buscar @@@@@@@@@@@@@@@@-->
+            <h2>Procure por: <strong>( )</strong></h2>
+            <div class="input-group">
+                <label for="code-2">Digite o código para desbloquear a Fase 3:</label>
+                <input type="text" id="code-2" placeholder="Digite o código">
+            </div>
+            <button id="unlock-phase3">
+                <i class="fas fa-unlock btn-icon"></i> Desbloquear Fase 3
+            </button>
+            <div id="code-message-2" class="message hidden"></div>
+        </div>
+        
+        <!-- Fase 3 - Quiz Final -->
+        <div id="quiz-screen-3" class="screen">
+            <h1>Fase 3: Nossa Jornada <span class="heart">❤</span></h1>
+            <p>Últimas perguntas sobre nossa vida juntos. Acerte todas para ver a surpresa final!</p>
+            
+            <div class="question" id="question-11">
+                <h3>Pergunta 11: Qual foi a maior aventura que vivemos juntos?</h3>
+                <div class="options">
+                    <div class="option" data-correct="false" data-value="A">Acampamento na serra</div>
+                    <div class="option" data-correct="false" data-value="B">Viagem internacional</div>
+                    <div class="option" data-correct="true" data-value="C">Ter nosso filhos</div>
+                    <div class="option" data-correct="false" data-value="D">Aula de dança</div>
+                </div>
+                <div id="feedback-11" class="message hidden"></div>
+            </div>
+            
+            <div class="question hidden" id="question-12">
+                <h3>Pergunta 12: O que mais me atrai em você?</h3>
+                <div class="options">
+                    <div class="option" data-correct="false" data-value="A">Seu olhar</div>
+                    <div class="option" data-correct="true" data-value="B">Seu sorriso</div>
+                    <div class="option" data-correct="false" data-value="C">Sua voz</div>
+                    <div class="option" data-correct="false" data-value="D">Seu abraço</div>
+                </div>
+                <div id="feedback-12" class="message hidden"></div>
+            </div>
+            
+            <div class="question hidden" id="question-13">
+                <h3>Pergunta 13: Qual é nossa lembrança mais engraçada?</h3>
+                <div class="options">
+                    <div class="option" data-correct="false" data-value="A">O bolo que queimamos</div>
+                    <div class="option" data-correct="false" data-value="B">Quando nos perdemos na estrada</div>
+                    <div class="option" data-correct="true" data-value="C">Nossa lua de mel</div>
+                    <div class="option" data-correct="false" data-value="D">A festa de ano novo</div>
+                </div>
+                <div id="feedback-13" class="message hidden"></div>
+            </div>
+            
+            <div class="question hidden" id="question-14">
+                <h3>Pergunta 14: O que mais valorizo no nosso dia a dia?</h3>
+                <div class="options">
+                    <div class="option" data-correct="true" data-value="A">Nossos momentos juntos</div>
+                    <div class="option" data-correct="false" data-value="B">As refeições juntos</div>
+                    <div class="option" data-correct="false" data-value="C">Assistir TV à noite</div>
+                    <div class="option" data-correct="false" data-value="D">Nossas caminhadas</div>
+                </div>
+                <div id="feedback-14" class="message hidden"></div>
+            </div>
+            
+            <div class="question hidden" id="question-15">
+                <h3>Pergunta 15: O que mais espero para os próximos anos?</h3>
+                <div class="options">
+                    <div class="option" data-correct="false" data-value="A">Viajar o mundo</div>
+                    <div class="option" data-correct="false" data-value="B">Conquistar novos objetivos</div>
+                    <div class="option" data-correct="false" data-value="C">Crescer profissionalmente</div>
+                    <div class="option" data-correct="true" data-value="D">Continuar ao seu lado, não importa o que aconteça</div>
+                </div>
+                <div id="feedback-15" class="message hidden"></div>
+            </div>
+            
+            <button id="next-question-3" class="hidden">
+                <i class="fas fa-arrow-right btn-icon"></i> Próxima Pergunta
+            </button>
+            <button id="finish-quiz-3" class="hidden">
+                <i class="fas fa-check btn-icon"></i> Finalizar Quiz
+            </button>
+        </div>
+        
+        <!-- Tela Final com Código 3 -->
+        <div id="final-code-screen" class="screen">
+            <h1>Você é Incrível! <span class="heart">❤</span></h1>
+            <p>Chegamos ao final da nossa jornada de perguntas!</p>
+            <p>Agora, vá até a <strong>Área de Alimentação</strong> e diga o código abaixo:</p>
+            <div class="poem">
+                <!-- EU  pessoa a buscar @@@@@@@@@@@@@@@@-->
+                <h2>Procure pelo seu: <strong>Marido</strong></h2>
+            </div>
+            <div class="input-group">
+                <label for="code-3">Digite o código para ver nossa galeria especial:</label>
+                <input type="text" id="code-3" placeholder="Digite o código">
+            </div>
+            <button id="unlock-memories">
+                <i class="fas fa-unlock btn-icon"></i> Desbloquear Lembranças
+            </button>
+            <div id="code-message-3" class="message hidden"></div>
+        </div>
+        
+        <!-- Tela Final com Galeria e Música -->
+        <div id="memories-screen" class="screen">
+            <h1>Nossas Lembranças <span class="heart">❤</span></h1>
+            <p>Estes são alguns dos momentos especiais que vivemos juntos:</p>
+            
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="imagem/galeria/1.jpg" alt="Foto 1 - Nosso Casamento">
+            </div>
+            <div class="gallery-item">
+                <img src="imagem/galeria/2.jpg" alt="Foto 2 - Lua de Mel">
+            </div>
+            <div class="gallery-item">
+                <img src="imagem/galeria/3.jpg" alt="Foto 3 - Primeira Viagem">
+            </div>
+            <div class="gallery-item">
+                <img src="imagem/galeria/4.jpg" alt="Foto 4 - Celebração Especial">
+            </div>
+            <div class="gallery-item">
+                <img src="imagem/galeria/5.JPG" alt="Foto 5 - Aniversário Passado">
+            </div>
+            <div class="gallery-item">
+                <img src="imagem/galeria/6.JPG" alt="Foto 6 - Momento Recente">
+            </div>
+            <div class="gallery-item">
+                <img src="imagem/galeria/7.JPG" alt="Foto 7 - Nosso Casamento">
+            </div>
+            <div class="gallery-item">
+                <img src="imagem/galeria/8.JPG" alt="Foto 8 - Lua de Mel">
+            </div>
+            <div class="gallery-item">
+                <img src="imagem/galeria/9.JPG" alt="Foto 9 - Primeira Viagem">
+            </div>
+            <div class="gallery-item">
+                <img src="imagem/galeria/10.JPG" alt="Foto 10 - Celebração Especial">
+            </div>
+            <div class="gallery-item">
+                <img src="imagem/galeria/11.JPG" alt="Foto 11 - Aniversário Passado">
+            </div>
+            <div class="gallery-item">
+                <img src="imagem/galeria/12.JPG" alt="Foto 12 - Momento Recente">
+            </div>
+            <div class="gallery-item">
+                <img src="imagem/galeria/13.JPG" alt="Foto 13 - Nosso Casamento">
+            </div>
+            <div class="gallery-item">
+                <img src="imagem/galeria/14.JPG" alt="Foto 14 - Lua de Mel">
+            </div>
+            <div class="gallery-item">
+                <img src="imagem/galeria/15.jpg" alt="Foto 15 - Primeira Viagem">
+            </div>
+            <div class="gallery-item">
+                <img src="imagem/galeria/16.JPG" alt="Foto 16 - Celebração Especial">
+            </div>
+            <div class="gallery-item">
+                <img src="imagem/galeria/17.JPG" alt="Foto 17 - Aniversário Passado">
+            </div>
+            <div class="gallery-item">
+                <img src="imagem/galeria/18.JPG" alt="Foto 18 - Momento Recente">
+            </div>
+            <div class="gallery-item">
+                <img src="imagem/galeria/19.jpg" alt="Foto 19 - Nosso Casamento">
+            </div>
+            <div class="gallery-item">
+                <img src="imagem/galeria/20.jpg" alt="Foto 20 - Lua de Mel">
+            </div>
+            <div class="gallery-item">
+                <img src="imagem/galeria/21.jpg" alt="Foto 21 - Primeira Viagem">
+            </div>
+            <div class="gallery-item">
+                <img src="imagem/galeria/22.jpg" alt="Foto 22 - Celebração Especial">
+            </div>
+            <div class="gallery-item">
+                <img src="imagem/galeria/23.jpg" alt="Foto 23 - Aniversário Passado">
+            </div>
+            <div class="gallery-item">
+                <img src="imagem/galeria/24.jpg" alt="Foto 24 - Momento Recente">
+            </div>
+                        <div class="gallery-item">
+                <img src="imagem/galeria/25.jpg" alt="Foto 24 - Momento Recente">
+            </div>
+                        <div class="gallery-item">
+                <img src="imagem/galeria/26.jpg" alt="Foto 24 - Momento Recente">
+            </div>
+                        <div class="gallery-item">
+                <img src="imagem/galeria/27.jpg" alt="Foto 24 - Momento Recente">
+            </div>
+                        <div class="gallery-item">
+                <img src="imagem/galeria/28.jpg" alt="Foto 24 - Momento Recente">
+            </div>
+        </div>
+
+            
+            <div class="music-player">
+                <h3>Nossa Música Especial</h3>
+                <p style="color: black;">Clique para tocar nossa música:</p>
+                <button id="play-music">
+                    <i class="fas fa-music btn-icon"></i> Tocar Música
+                </button>
+
+                <!-- Player de vídeo escondido inicialmente -->
+                <div id="music-container" style="display:none; margin-top: 15px;">
+            <a href="https://www.youtube.com/watch?v=DULQudMe7vA&list=RDGMEMFDHdtbQF5jLxlUZMleBN_wVMDULQudMe7vA&start_radio=1" 
+            target="_blank" 
+            class="btn-music">
+                <i class="fas fa-music btn-icon"></i> Ouvir Música
+            </a>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress" id="music-progress"></div>
+                </div>
+            </div>
+
+            <div class="poem">
+                <p>Feliz Aniversário de Casamento, Minha querida expoza</p>
+                <p>Hoje celebramos não apenas os anos juntos,</p>
+                <p>Mas cada sorriso, cada abraço e cada momento compartilhado.</p>
+                <p>Que continuemos escrevendo nossa história com amor, alegria e sonhos realizados.</p>
+                <p>Que Logan, Liam e Erick cresçam cercados de nossa ternura e união,</p>
+                <p>E que nosso amor floresça a cada dia, sempre mais forte e eterno.</p>
+                <p>Te amo profundamente, hoje, amanhã e por toda a vida!</p>
+                <p>De Ewerton Luiz e Silva  para Valeria coli Bunchait Silva</p>
+            </div>
+
+        
+        <!-- Elementos de áudio -->
+        <audio id="click-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3"></audio>
+        <audio id="correct-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+        <audio id="wrong-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+        <audio id="celebration-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-happy-crowd-celebration-454.mp3"></audio>
+        <audio id="music" src="https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3"></audio>
+    </div>
+
+    <div class="celebration" id="celebration"></div>
+    <!-- Chamar o script -->
+    <script src="script.js"></script>
+</body>
+</html>
