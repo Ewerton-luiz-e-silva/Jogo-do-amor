@@ -197,12 +197,12 @@ function checkCode(phase) {
     if (phase === 1) {
         codeInput = code1Input;
         messageElement = codeMessage1;
-        correctCode = 'logan-o-wolverine';
+        correctCode = 'liam-o-brincalhao';
         nextScreen = quizScreen2;
     } else if (phase === 2) {
         codeInput = code2Input;
         messageElement = codeMessage2;
-        correctCode = 'liam-o-brincalhao';
+        correctCode = 'logan-o-wolverine';
         nextScreen = quizScreen3;
     } else if (phase === 3) {
         codeInput = code3Input;
